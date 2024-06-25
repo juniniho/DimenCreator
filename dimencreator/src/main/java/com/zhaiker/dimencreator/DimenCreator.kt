@@ -6,7 +6,6 @@ object DimenCreator {
 
     /**
      * 生成Dimens文件，文件位于项目的根目录
-     * implementation 'me.jessyan:autosize:1.1.2'
      */
     fun createDimens() {
         val fontMax = 100 //字体最大值

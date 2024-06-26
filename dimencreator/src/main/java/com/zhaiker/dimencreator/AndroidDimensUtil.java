@@ -28,8 +28,9 @@ public class AndroidDimensUtil {
         // 获取项目res文件的路径
         getResPath(new File("dimencreator").getAbsolutePath());
 
-
-        AndroidDimensUtil.createDimens(1280, 800);
+        //需要注意，在3.0之后，某些型号手机需要将高度减去48像素，即底部虚拟状态栏的高度
+        //N60C实际分辨率为1440*720，需要生成1392才能匹配
+        AndroidDimensUtil.createDimens(1392, 720);
         //AndroidDimensUtil.createDimens(1280, 800);
 
         AndroidDimensUtil.createDimens(1920, 1080);

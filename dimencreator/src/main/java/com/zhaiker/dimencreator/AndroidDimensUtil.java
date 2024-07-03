@@ -60,8 +60,13 @@ public class AndroidDimensUtil {
 
 //        System.out.println("生成Width : " + dimenWidth + " , 基准Width : " + baseWidth + " , width比例 : " + scaleWidth);
 
-        for (int i = 1; i <= max; i++) {
-            sbForWidth.append(WidthTemplate.replace("{0}", i + "").replace("{1}", leftTwoDecimal(scale * i) + ""));
+        for (int i = -100; i <= max; i++) {
+            String k = i + "";
+            if(i < 0){
+                k = "_"+(-i);
+            }
+            sbForWidth.append(WidthTemplate.replace("{0}", k).replace("{1}", leftTwoDecimal(scale * i) + ""));
+
         }
 
         sbForWidth.append("</resources>");
@@ -98,8 +103,13 @@ public class AndroidDimensUtil {
 
         int max = Math.max(baseHeight, baseWidth);
 
-        for (int i = 1; i <= max; i++) {
-            sbForWidth.append(WidthTemplate.replace("{0}", i + "").replace("{1}", leftTwoDecimal(commonScale * i) + ""));
+        for (int i = -100; i <= max; i++) {
+            String k = i + "";
+            if(i < 0){
+                k = "_"+(-i);
+            }
+            sbForWidth.append(WidthTemplate.replace("{0}", k).replace("{1}", leftTwoDecimal(commonScale * i) + ""));
+
         }
         sbForWidth.append("</resources>");
 

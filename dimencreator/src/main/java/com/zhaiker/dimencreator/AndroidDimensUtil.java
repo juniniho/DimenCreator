@@ -1,5 +1,10 @@
 package com.zhaiker.dimencreator;
 
+import android.app.Activity;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.Display;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -35,9 +40,25 @@ public class AndroidDimensUtil {
 
         AndroidDimensUtil.createDimens(1920, 1080);
 
+        AndroidDimensUtil.createDimens(1824, 1200);
+
 
         // 添加以上分辨率都木有通用的,参考:http://blog.csdn.net/guozhaohui628/article/details/71870530
         AndroidDimensUtil.createCommonDimens(1f);
+    }
+
+    /**
+     * 打印values识别的分辨率，和物理分辨率可能不一样，有虚拟导航键等的影响
+     * @param activity
+     */
+    public static void logResolution(Activity activity){
+        DisplayMetrics metrics = new DisplayMetrics();
+
+        Display display = activity.getWindowManager().getDefaultDisplay();
+
+        display.getMetrics(metrics);
+
+        Log.d("App", "display  is " + metrics.widthPixels + "*" + metrics.heightPixels);
     }
 
     /**
@@ -57,6 +78,10 @@ public class AndroidDimensUtil {
         float scaleWidth = dimenWidth * 1.0f / baseWidth;
         float scaleHeight = dimenHeight * 1.0f / baseHeight;
         float scale = Math.min(scaleWidth,scaleHeight);
+        //T2平板的分辨率，不缩放
+        if(dimenHeight == 1824 && dimenWidth == 1200){
+            scale = 1f;
+        }
 
 //        System.out.println("生成Width : " + dimenWidth + " , 基准Width : " + baseWidth + " , width比例 : " + scaleWidth);
 

@@ -42,6 +42,8 @@ public class AndroidDimensUtil {
 
         AndroidDimensUtil.createDimens(1824, 1200);
 
+        //1080*1848 T1
+        AndroidDimensUtil.createDimens(1848, 1080);
 
         // 添加以上分辨率都木有通用的,参考:http://blog.csdn.net/guozhaohui628/article/details/71870530
         AndroidDimensUtil.createCommonDimens(1f);
@@ -79,7 +81,7 @@ public class AndroidDimensUtil {
         float scaleHeight = dimenHeight * 1.0f / baseHeight;
         float scale = Math.min(scaleWidth,scaleHeight);
         //T2平板的分辨率，不缩放
-        if(dimenHeight == 1824 && dimenWidth == 1200){
+        if((dimenHeight == 1824 && dimenWidth == 1200) || (dimenHeight == 1848 && dimenWidth == 1080)){
             scale = 1f;
         }
 
